@@ -13,15 +13,15 @@ void main() {
       final selectorGroups = parse(
         "h1.test:has(h1:icontains('owo')), h2[href*='owo']:first > span",
       );
-      expect(selectorGroups.length, 2);
+      expect(selectorGroups.groups.length, 2);
     });
 
     test('selector', () {
       final selectorGroups = parse(
         "h1#id[href*='http://'].test:has(h1:icontains('owo'))",
       );
-      expect(selectorGroups.length, 1);
-      final selectors = selectorGroups.first;
+      expect(selectorGroups.groups[0].selectors.length, 1);
+      final selectors = selectorGroups.groups.first;
       expect(selectors.selectors.length, 1);
       final selector = selectors.selectors.first;
       expect(selector.id, 'id');
@@ -35,7 +35,7 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('h1')[0];
+      final selector = parse('h1');
       final result = selector.select(doc.body!);
       expect(result.first.text, 'Title Here');
     });
@@ -45,7 +45,7 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('.content')[0];
+      final selector = parse('.content');
       final result = selector.select(doc.body!);
       expect(result.first.localName, 'div');
     });
@@ -55,7 +55,7 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('#woop')[0];
+      final selector = parse('#woop');
       final result = selector.select(doc.body!);
       expect(result.first.text.trim(), 'Woop');
     });
@@ -65,7 +65,7 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('[data-test=true]')[0];
+      final selector = parse('[data-test=true]');
       final result = selector.select(doc.body!);
       expect(result.first.text.trim(), 'Sub title');
     });
@@ -75,7 +75,7 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('div:has(p)')[0];
+      final selector = parse('div:has(p)');
       final result = selector.select(doc.body!);
       expect(result.first.classes.contains('content'), true);
     });
@@ -87,7 +87,7 @@ void main() {
 
       PseudoSelector.handlers['icontains-test'] = icontains;
 
-      final selector = parse('*:icontains-test(Sub title)')[0];
+      final selector = parse('*:icontains-test(Sub title)');
       final result = selector.select(doc.body!);
       expect(result.first.localName, 'sub');
     });
@@ -97,7 +97,7 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('body div sub')[0];
+      final selector = parse('body div sub');
       final result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'sub');
     });
@@ -107,11 +107,11 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      var selector = parse('body div > sub')[0];
+      var selector = parse('body div > sub');
       var result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'sub');
 
-      selector = parse('body > div sub')[0];
+      selector = parse('body > div sub');
       result = selector.select(doc.documentElement!);
       expect(result.isEmpty, true);
     });
@@ -121,11 +121,11 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      var selector = parse('p + strong')[0];
+      var selector = parse('p + strong');
       var result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'strong');
 
-      selector = parse('p + p')[0];
+      selector = parse('p + p');
       result = selector.select(doc.documentElement!);
       expect(result.isEmpty, true);
     });
@@ -135,15 +135,15 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      var selector = parse('p ~ strong')[0];
+      var selector = parse('p ~ strong');
       var result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'strong');
 
-      selector = parse('p ~ p')[0];
+      selector = parse('p ~ p');
       result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'p');
 
-      selector = parse('small ~ strong')[0];
+      selector = parse('small ~ strong');
       result = selector.select(doc.documentElement!);
       expect(result.isEmpty, true);
     });
@@ -153,9 +153,20 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      var selector = parse('p:has(~ strong)')[0];
+      var selector = parse('p:has(~ strong)');
       var result = selector.select(doc.documentElement!);
       expect(result.first.text, 'Some content');
+    });
+
+    test('multi', () {
+      final file = File('test/fragment/simple.html');
+      final html = file.readAsStringSync(encoding: utf8);
+      final doc = html_parser.parse(html);
+
+      var selector = parse('h1, p');
+      var result = selector.select(doc.documentElement!);
+      expect(result.first.text, 'Title Here');
+      expect(result.last.text, 'uwu');
     });
   });
 }

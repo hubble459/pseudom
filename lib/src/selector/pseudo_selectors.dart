@@ -2,7 +2,7 @@ import 'package:html/dom.dart';
 import 'package:pseudom/pseudom.dart';
 
 bool has(Element element, String? args) {
-  return parse(args!).any((selector) => selector.selectFirst(element) != null);
+  return parse(args!).selectFirst(element) != null;
 }
 
 bool empty(Element element, String? args) {
