@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:html/dom.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:pseudom/pseudom.dart';
 import 'package:pseudom/src/selector/pseudo_selector.dart';

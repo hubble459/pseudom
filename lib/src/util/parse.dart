@@ -4,9 +4,6 @@ import 'package:pseudom/src/csslib/CSSParser.dart';
 import 'package:pseudom/src/selector/css_selector_group_visitor.dart';
 import 'package:pseudom/src/selector/selector_group.dart';
 
-final _1 = CSSLexer.checkVersion();
-final _2 = CSSParser.checkVersion();
-
 List<SelectorGroup> parse(String selector) {
   CSSLexer.checkVersion();
   CSSParser.checkVersion();
