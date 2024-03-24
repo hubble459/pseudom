@@ -87,7 +87,7 @@ combinator
     : Plus ws
     | Greater ws
     | Tilde ws
-    | Space ws
+    | ws
     ;
 
 simpleSelectorSequence

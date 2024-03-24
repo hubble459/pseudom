@@ -1,39 +1,48 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# pseudom
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Dart package for CSS parsing and manipulation, with added support for custom pseudo selectors.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Parses CSS strings into a structured representation that can be manipulated programmatically.
+- Supports custom pseudo selectors allowing users to define their own logic for handling them.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To start using this package, add `pseudom` to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  pseudom: ^1.0.0
+```
+
+Then run `dart pub get` or `flutter pub get` to install the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+import 'package:pseudom/pseudom.dart';
+
+void main() {
+  // Add custom pseudo selector handler
+  PseudoSelector.handlers['selector-name'] = (Element element, String? args) => true;
+}
 ```
+
+For detailed usage and examples, see the [documentation](https://pub.dev/packages/pseudom).
+
+## Currently Supported Selectors
+
+| Selector        | Description                           |
+|-----------------|---------------------------------------|
+| :empty          | Element should be empty.              |
+| :has(<selector>)| Element has something matching the selector. |
+| :first          | Element is first in parent.               |
+| :last           | Element is last in parent.                |
+| :contains(text) | Element contains text.                    |
+| :icontains(text)| Element contains text (case insensitive). |
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+For more information, visit the [package on pub.dev](https://pub.dev/packages/pseudom).
+To contribute to the package, file issues, or find more information, visit the [GitHub repository](https://github.com/hubble459/pseudom).
