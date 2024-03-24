@@ -1,16 +1,14 @@
 name: pseudom
-description: A starting point for Dart libraries or applications.
+description: A Dart package for CSS parsing and manipulation, with added support for custom pseudo selectors.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/hubble459/pseudom
 
 environment:
   sdk: ^3.3.1
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
   antlr4: ^4.13.1
-  html: any
+  html: ^0.15.4
 
 dev_dependencies:
   lints: ^3.0.0

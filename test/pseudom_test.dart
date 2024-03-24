@@ -107,13 +107,13 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('body div > sub')[0];
-      final result = selector.select(doc.documentElement!);
+      var selector = parse('body div > sub')[0];
+      var result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'sub');
 
-      final selector2 = parse('body > div sub')[0];
-      final result2 = selector2.select(doc.documentElement!);
-      expect(result2.isEmpty, true);
+      selector = parse('body > div sub')[0];
+      result = selector.select(doc.documentElement!);
+      expect(result.isEmpty, true);
     });
 
     test('query select next sibling', () {
@@ -121,13 +121,13 @@ void main() {
       final html = file.readAsStringSync(encoding: utf8);
       final doc = html_parser.parse(html);
 
-      final selector = parse('p + strong')[0];
-      final result = selector.select(doc.documentElement!);
+      var selector = parse('p + strong')[0];
+      var result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'strong');
 
-      final selector2 = parse('p + p')[0];
-      final result2 = selector2.select(doc.documentElement!);
-      expect(result2.isEmpty, true);
+      selector = parse('p + p')[0];
+      result = selector.select(doc.documentElement!);
+      expect(result.isEmpty, true);
     });
 
     test('query select any sibling', () {
@@ -143,9 +143,9 @@ void main() {
       result = selector.select(doc.documentElement!);
       expect(result.first.localName, 'p');
 
-      final selector2 = parse('small ~ strong')[0];
-      final result2 = selector2.select(doc.documentElement!);
-      expect(result2.isEmpty, true);
+      selector = parse('small ~ strong')[0];
+      result = selector.select(doc.documentElement!);
+      expect(result.isEmpty, true);
     });
 
     test('query has sibling', () {
