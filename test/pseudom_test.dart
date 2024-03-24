@@ -10,12 +10,16 @@ import 'package:test/test.dart';
 void main() {
   group('selectors', () {
     test('groups', () {
-      final selectorGroups = parse("h1.test:has(h1:icontains('owo')), h2[href*='owo']:first > span");
+      final selectorGroups = parse(
+        "h1.test:has(h1:icontains('owo')), h2[href*='owo']:first > span",
+      );
       expect(selectorGroups.length, 2);
     });
 
     test('selector', () {
-      final selectorGroups = parse("h1#id[href*='http://'].test:has(h1:icontains('owo'))");
+      final selectorGroups = parse(
+        "h1#id[href*='http://'].test:has(h1:icontains('owo'))",
+      );
       expect(selectorGroups.length, 1);
       final selectors = selectorGroups.first;
       expect(selectors.selectors.length, 1);

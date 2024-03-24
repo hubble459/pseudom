@@ -24,5 +24,7 @@ bool contains(Element element, String? args) {
 
 bool icontains(Element element, String? args) {
   final text = args?.toLowerCase() ?? '';
-  return element.nodes.whereType<Text>().any((e) => e.data.toLowerCase().contains(text));
+  return element.nodes
+      .whereType<Text>()
+      .any((e) => e.data.toLowerCase().contains(text));
 }

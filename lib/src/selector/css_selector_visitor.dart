@@ -47,7 +47,8 @@ class CSSSelectorVisitor extends CSSParserBaseVisitor {
 
   @override
   visitClassName(ClassNameContext ctx) {
-    selector.attributeSelectors.add(AttributeSelector("class", AttributeMatcher.includes, ctx.ident()!.text));
+    selector.attributeSelectors.add(AttributeSelector(
+        "class", AttributeMatcher.includes, ctx.ident()!.text));
   }
 
   @override
@@ -70,7 +71,8 @@ class CSSSelectorVisitor extends CSSParserBaseVisitor {
         am = AttributeMatcher.exact;
       }
     }
-    selector.attributeSelectors.add(AttributeSelector(attr, am, trim(trim(value, '"'), "'")));
+    selector.attributeSelectors
+        .add(AttributeSelector(attr, am, trim(trim(value, '"'), "'")));
   }
 
   @override
@@ -87,7 +89,10 @@ class CSSSelectorVisitor extends CSSParserBaseVisitor {
   visitFunctionalPseudo(FunctionalPseudoContext ctx) {
     String type = ctx.Function_()!.text!;
     type = type.substring(0, type.length - 1);
-    selector.pseudoSelectors.add(PseudoSelector(type, trim(trim((ctx.expression() ?? ctx.selector())?.text, '"'), "'")));
+    selector.pseudoSelectors.add(PseudoSelector(
+      type,
+      trim(trim((ctx.expression() ?? ctx.selector())?.text, '"'), "'"),
+    ));
   }
 
   @override

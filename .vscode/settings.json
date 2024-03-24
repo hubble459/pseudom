@@ -2,5 +2,11 @@
     "cSpell.words": [
         "combinators",
         "pseudom"
-    ]
+    ],
+    "dart.lineLength": 80,
+    "[dart]": {
+        "editor.rulers": [
+            80
+        ],
+    }
 }

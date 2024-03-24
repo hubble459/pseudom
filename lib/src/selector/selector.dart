@@ -112,11 +112,13 @@ class Selector {
             return false;
           }
         case AttributeMatcher.includes:
-          if (!value.contains(RegExp(r'\b' + attributeSelector.value! + r'\b'))) {
+          if (!value
+              .contains(RegExp(r'\b' + attributeSelector.value! + r'\b'))) {
             return false;
           }
         case AttributeMatcher.dash:
-          if (!value.contains(RegExp(r'\b' + attributeSelector.value! + r'(-.*?)?\b'))) {
+          if (!value.contains(
+              RegExp(r'\b' + attributeSelector.value! + r'(-.*?)?\b'))) {
             return false;
           }
         case AttributeMatcher.prefix:
