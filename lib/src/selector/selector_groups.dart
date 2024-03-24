@@ -3,8 +3,9 @@ import 'package:pseudom/src/selector/selector_group.dart';
 
 class SelectorGroups {
   final List<SelectorGroup> groups;
+  final String rawSelector;
 
-  SelectorGroups(this.groups);
+  SelectorGroups(this.groups, this.rawSelector);
 
   Set<Element> select(Element node) {
     return _select(node, [...groups]);

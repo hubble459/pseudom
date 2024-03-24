@@ -168,5 +168,15 @@ void main() {
       expect(result.first.text, 'Title Here');
       expect(result.last.text, 'uwu');
     });
+
+    test('error', () {
+      try {
+        parse('hasdfgaq ewgq34<>?@?@q3e!@#\$!@EER.sdf[]  asdf');
+      } catch (e) {
+        expect(true, true);
+        return;
+      }
+      expect(false, true);
+    });
   });
 }

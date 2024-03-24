@@ -9,5 +9,5 @@ SelectorGroups parse(String selector) {
   CSSParser.checkVersion();
   final input = InputStream.fromString(selector);
   final tree = CSSParser(CommonTokenStream(CSSLexer(input))).selectorGroup();
-  return SelectorGroups(CSSSelectorGroupVisitor().visit(tree));
+  return SelectorGroups(CSSSelectorGroupVisitor().visit(tree), selector);
 }
