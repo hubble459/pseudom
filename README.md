@@ -6,14 +6,16 @@ A Dart package for CSS parsing and manipulation, with added support for custom p
 
 - Parses CSS strings into a structured representation that can be manipulated programmatically.
 - Supports custom pseudo selectors allowing users to define their own logic for handling them.
+- Can query on HTML nodes from the `html` package
 
 ## Getting started
 
-To start using this package, add `pseudom` to your `pubspec.yaml`:
+To start using this package, add `pseudom` and `html` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
   pseudom: ^1.0.0
+  html: any
 ```
 
 Then run `dart pub get` or `flutter pub get` to install the package.
