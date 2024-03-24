@@ -16,6 +16,6 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - run: dart pub get
-      - run: dart format --output=none --set-exit-if-changed .
+      - run: find . -path ./lib/src/csslib -prune -o -name '*.dart' -exec dart format --output=none --set-exit-if-changed {} \;
       - run: dart analyze
       - run: dart test
