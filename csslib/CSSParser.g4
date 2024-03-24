@@ -80,7 +80,7 @@ selectorGroup
     ;
 
 selector
-    : simpleSelectorSequence ws (combinator simpleSelectorSequence ws)*
+    : (combinator | ws) simpleSelectorSequence ws (combinator simpleSelectorSequence ws)*
     ;
 
 combinator

@@ -147,5 +147,15 @@ void main() {
       final result2 = selector2.select(doc.documentElement!);
       expect(result2.isEmpty, true);
     });
+
+    test('query has sibling', () {
+      final file = File('test/fragment/simple.html');
+      final html = file.readAsStringSync(encoding: utf8);
+      final doc = html_parser.parse(html);
+
+      var selector = parse('p:has(~ strong)')[0];
+      var result = selector.select(doc.documentElement!);
+      expect(result.first.text, 'Some content');
+    });
   });
 }
