@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2024-03-24
+
+### 🚀 Features
+
+- *(selector)* Add selector group and (slightly) optimize select first
+
+### 📚 Documentation
+
+- *(license)* Update MIT license
+
 ## [1.0.0] - 2024-03-24
 
 ### 🚀 Features
@@ -18,6 +28,7 @@ All notable changes to this project will be documented in this file.
 ### 📚 Documentation
 
 - *(readme)* Update readme
+- *(changelog)* Update changelog
 - *(changelog)* Update changelog
 
 ### 🎨 Styling
